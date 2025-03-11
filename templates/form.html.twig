@@ -1,0 +1,60 @@
+{# form.html.twig - zawartość strony z formularzem #}
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h2 class="text-center mb-4">Formularz Rekrutacyjny</h2>
+    <div class="card p-4">
+        
+        {# Sprawdzamy, czy są jakieś błędy i wyświetlamy je w ładny sposób #}
+        {% if errors is not empty %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <form action="" method="POST" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="first_name" class="form-label">Imię*</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="last_name" class="form-label">Nazwisko*</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail*</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Telefon*</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="mb-3">
+                <label for="linkedin" class="form-label">LinkedIn (opcjonalnie)</label>
+                <input type="url" class="form-control" id="linkedin" name="linkedin">
+            </div>
+            <div class="mb-3">
+                <label for="github" class="form-label">GitHub (opcjonalnie)</label>
+                <input type="url" class="form-control" id="github" name="github">
+            </div>
+            <div class="mb-3">
+                <label for="experience" class="form-label">Napisz coś o sobie*</label>
+                <textarea class="form-control" id="experience" name="experience" rows="4" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="cv" class="form-label">Prześlij CV*</label>
+                <input type="file" class="form-control" id="cv" name="cv" required>
+            </div>
+            <div class="mb-3">
+                <label for="portfolio" class="form-label">Dodatkowe pliki (opcjonalne)</label>
+                <input type="file" class="form-control" id="portfolio" name="portfolio">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Wyślij</button>
+        </form>
+    </div>
+{% endblock %}

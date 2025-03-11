@@ -1,0 +1,72 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Szczegóły aplikacji</h2>
+
+        <!-- Kontener na szczegóły aplikacji -->
+        <div class="card p-4">
+            <div class="card-header">
+                <h4>{{ application.first_name }} {{ application.last_name }}</h4>
+            </div>
+            <div class="card-body">
+                <!-- Imię i Nazwisko -->
+                <p><strong>Imię:</strong> {{ application.first_name }}</p>
+                <p><strong>Nazwisko:</strong> {{ application.last_name }}</p>
+
+                <!-- E-mail -->
+                <p><strong>Email:</strong> {{ application.email }}</p>
+
+                <!-- Telefon -->
+                <p><strong>Telefon:</strong> {{ application.phone }}</p>
+
+                <!-- LinkedIn -->
+                <p><strong>LinkedIn:</strong> 
+                    {% if application.linkedin %}
+                        <a href="{{ application.linkedin }}" target="_blank">{{ application.linkedin }}</a>
+                    {% else %}
+                        Brak LinkedIn
+                    {% endif %}
+                </p>
+
+                <!-- GitHub -->
+                <p><strong>GitHub:</strong>
+                    {% if application.github %}
+                        <a href="{{ application.github }}" target="_blank">{{ application.github }}</a>
+                    {% else %}
+                        Brak GitHub
+                    {% endif %}
+                </p>
+
+                <!-- Doświadczenie -->
+                <p><strong>Doświadczenie:</strong></p>
+                <p>{{ application.experience }}</p>
+
+                <!-- Portfolio -->
+                <p><strong>Portfolio:</strong> 
+                    {% if application.portfolio %}
+                        <a href="{{ application.portfolio }}" target="_blank">Pobierz plik</a>
+                    {% else %}
+                        Brak portfolio
+                    {% endif %}
+                </p>
+
+                <!-- CV -->
+                <p><strong>CV:</strong> 
+                    {% if application.cv %}
+                        <a href="{{ application.cv }}" target="_blank">Pobierz CV</a>
+                    {% else %}
+                        Brak CV
+                    {% endif %}
+                </p>
+            </div>
+
+            <!-- Przycisk powrotu do listy aplikacji -->
+            <div class="card-footer">
+                <a href="index.php?page=aplications" class="btn btn-primary">Powrót do listy aplikacji</a>
+                <a href="index.php?page=aplication_detail&deleteId={{application.id}}" class="btn btn-danger">Odmów</a>
+            </div>
+            
+        </div>
+    </div>
+{% endblock %}
